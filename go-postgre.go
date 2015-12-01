@@ -16,7 +16,7 @@ import (
 var dbmap = initDb()
 
 func initDb() *gorp.DbMap {
-	db, err := sql.Open("postgres", "postgres://postgres:09030015@localhost/gopgtest")
+	db, err := sql.Open("postgres", "postgres://iagawvrugziimh:LZ_PDpTQnPAs8_FFYs7NQrM8Ed@ec2-54-83-203-50.compute-1.amazonaws.com/dc66109fm9k1r4")
 	checkErr(err, "sql.Open failed")
 	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.PostgresDialect{}}
 	dbmap.AddTableWithName(User{}, "User2").SetKeys(true, "Id")
