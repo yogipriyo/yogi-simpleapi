@@ -161,7 +161,8 @@ func main() {
 		v1.DELETE("/users/:id", DeleteUser)
 	}
 	r.GET("/", index)
-	r.Run(":8081")
+	//r.Run(":8081")
+	r.Run()
 }
 
 //static example//
