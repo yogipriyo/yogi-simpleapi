@@ -7,8 +7,6 @@ import (
 	"github.com/yogipriyo/Simple-Gin-Gonic-API/Godeps/_workspace/src/gopkg.in/gorp.v1"
 	"log"
 	"strconv"
-	//"fmt"
-	//"reflect"
 )
 
 ////
@@ -16,6 +14,7 @@ import (
 var dbmap = initDb()
 
 func initDb() *gorp.DbMap {
+	//db, err := sql.Open("postgres", "postgres://postgres:09030015@localhost/gopgtest")
 	db, err := sql.Open("postgres", "postgres://iagawvrugziimh:LZ_PDpTQnPAs8_FFYs7NQrM8Ed@ec2-54-83-203-50.compute-1.amazonaws.com:5432/dc66109fm9k1r4")
 	checkErr(err, "sql.Open failed")
 	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.PostgresDialect{}}
@@ -47,10 +46,6 @@ func GetUsers(c *gin.Context) {
 func GetUser(c *gin.Context) {
 	param_id := c.Params.ByName("id")
 	id, _ := strconv.Atoi(param_id)
-	//original//
-	//var user User
-	//err := dbmap.SelectOne(&user, "SELECT * FROM user2 WHERE id=?", id)
-	//new//
 	obj, err := dbmap.Get(User{}, id)
 	//c.JSON(404, gin.H{"obj" : obj})
 	user := obj.(*User)
